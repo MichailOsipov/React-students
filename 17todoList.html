@@ -1,0 +1,170 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+			// START CODE
+            class TodoItem extends React.Component {
+                handleCompleteChange = () => {
+                    const name = this.props.name;
+                    const isComplete = this.props.isComplete;
+                    const onCompleteChange = this.props.onCompleteChange;
+
+                    const newIsComplete = !isComplete;
+
+                    onCompleteChange(name, newIsComplete);
+                };               
+
+                render() {
+                    const name = this.props.name;   
+                    const isComplete = this.props.isComplete;                 
+
+                    return (
+                        <div style={{ border: '2px dashed', width: 500 }}>
+                            <h2>{name}</h2><br/>
+                            {isComplete === true && (<h4>Выполнено</h4>)}
+                            {isComplete === false && (<h4>Не выполнено</h4>)}
+                            <br />
+                            <button onClick={this.handleCompleteChange}>Change status</button><br />
+                        </div>
+                    );
+                }
+            }
+
+			class TodoList extends React.Component {
+				state = {
+					todoItems: [{ name: 'Помыть окно', isComplete: false }],
+                    inputValue: '',
+                    filter: 'all',
+				};
+
+				handleCompleteChange = (todoName, newIsComplete) => {
+					const oldTodoItems = this.state.todoItems;
+
+                    const newTodoItems = oldTodoItems.map((todoItem) => {
+                        const name = todoItem.name;
+                        const isComplete = todoItem.isComplete;
+
+                        if (name === todoName) {
+                            return {
+                                name: name,
+                                isComplete: newIsComplete,
+                            };
+                        }
+
+                        return {
+                            name: name,
+                            isComplete: isComplete,
+                        };
+                    });
+
+                    this.setState({ todoItems: newTodoItems });
+				}
+
+                setInputValue = (event) => {
+                    const newInputValue = event.target.value;
+
+                    this.setState({ inputValue: newInputValue });
+                }
+
+                addNewTodo = () => {
+                    const inputValue = this.state.inputValue;
+                    const oldTodoItems = this.state.todoItems;
+
+                    const newTodo = {
+                        name: inputValue,
+                        isComplete: false,
+                    };
+
+                    const newTodoItems = [];
+
+                    for (let i = 0; i < oldTodoItems.length; i++) {
+                        newTodoItems.push(oldTodoItems[i]);
+                    }
+
+                    newTodoItems.push(newTodo);
+
+                    this.setState({
+                        todoItems: newTodoItems,
+                        inputValue: '',
+                    });
+                }
+
+                showAll = () => {
+                    this.setState({ filter: 'all' });
+                }
+
+                showCompleted = () => {
+                    this.setState({ filter: 'completed' });
+                }
+
+                showNotCompleted = () => {
+                    this.setState({ filter: 'not-completed' });
+                }
+
+				render(){
+                    const allTodoItems = this.state.todoItems;
+                    const inputValue = this.state.inputValue;
+                    const filter = this.state.filter;
+
+                    let todoItems;
+
+                    if (filter === 'all') {
+                        todoItems = allTodoItems;
+                    } else if (filter === 'completed') {
+                        todoItems = allTodoItems.filter((item) => {
+                            return item.isComplete === true;
+                        });
+                    } else if (filter === 'not-completed') {
+                        todoItems = allTodoItems.filter((item) => {
+                            return item.isComplete === false;
+                        });
+                    }
+
+                    return (
+                        <div>
+                            <div>
+                                <h2>Фильтры</h2>
+                                <button onClick={this.showAll}>Показать Все</button>
+                                <button onClick={this.showCompleted}>Показать Выполненые</button>
+                                <button onClick={this.showNotCompleted}>Показать Не выполненые</button>
+                            </div>
+                            <div>
+                                {todoItems.map((item) => {
+                                    const isComplete = item.isComplete;
+                                    const name = item.name;
+
+                                    return (
+                                        <TodoItem
+                                            key={name}
+                                            name={name}
+                                            isComplete={isComplete}
+                                            onCompleteChange={this.handleCompleteChange}
+                                        />
+                                    );
+                                })}
+                            </div>
+                            <div>
+                                <h2>Новое TODO:</h2><br />
+                                <input type="text" value={inputValue} onChange={this.setInputValue} />
+                                <button onClick={this.addNewTodo}>Добавить</button>
+                            </div>
+                            
+                        </div>
+                    );
+				}
+			}
+
+			ReactDOM.render(<TodoList />, document.getElementById('root'));
+			// END CODE
+		</script>
+    </body>
+</html>

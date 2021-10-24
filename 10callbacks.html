@@ -1,0 +1,56 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+			// START CODE
+            class Cat extends React.Component {
+                render() {
+                    const name = this.props.name;
+                    const onSleep = this.props.onSleep;
+
+                    return (
+                        <div>
+                            <h2>{name}</h2>
+                            <button onClick={onSleep}>Идти спать</button>
+                        </div>
+                    );
+                }
+            }
+			class Cats extends React.Component {
+                state = { sleepyCats: 0 }
+
+                handleSleep = () => {
+                    const previousSleepyCats = this.state.sleepyCats;
+                    this.setState({ sleepyCats: previousSleepyCats + 1 });
+                }
+
+				render(){
+                    const sleepyCats = this.state.sleepyCats;
+
+					return(
+                        <div>
+						    <Cat name="Пушок" onSleep={this.handleSleep} />
+						    <Cat name="Рыжик" onSleep={this.handleSleep} />
+						    <Cat name="Белыш" onSleep={this.handleSleep} />
+                            <div>
+                                Сейчас спят котов: {sleepyCats}    
+                            </div>
+                        </div>
+					)
+				}
+			}
+
+			ReactDOM.render(<Cats />, document.getElementById('root'));
+			// END CODE
+		</script>
+    </body>
+</html>

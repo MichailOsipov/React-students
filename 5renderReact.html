@@ -1,0 +1,31 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+          // START CODE
+          class HelloWorld extends React.Component {          
+            render() {          
+              return (
+                <div>
+                  <h1>Hello world!</h1>
+                  <a href="https://reactjs.org/">React documentation</a>
+                  <img src="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png" />
+                </div>
+              );
+            }
+          }
+
+          ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+			    // END CODE
+		</script>
+    </body>
+</html>

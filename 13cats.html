@@ -1,0 +1,81 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+          // START CODE
+            class Cat extends React.Component {
+                render() {
+                    const name = this.props.name;
+                    const color = this.props.color;
+                    const age = this.props.age;
+                    const hobby = this.props.hobby;
+                    const avatar = this.props.avatar;
+
+                    return (
+                        <div>
+                            <h2 style={{ fontSize: 30 }}>{name}</h2>
+                            <div style={{ fontSize: 25 }}>
+                                <b>Цвет: </b>
+                                <span>{color}</span>
+                            </div>
+                            <div style={{ fontSize: 25 }}>
+                                <b>Возраст: </b>
+                                <span>{age}</span>
+                            </div>
+                            <div style={{ fontSize: 25 }}>
+                                <b>Любит: </b>
+                                <span>{hobby}</span>
+                            </div>
+                            <img style={{ width: 300, height: 150 }} src={avatar} alt="avatar" />
+                        </div>
+                    );
+                }
+            }
+
+            class Cats extends React.Component {
+                render() {
+                    return (
+                        <div>
+                            {/*------cat1-------*/}
+                            <Cat
+                                name="Белыш"
+                                color="Черный"
+                                age={3}
+                                hobby="Рвать обои"
+                                avatar="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png"
+                            />
+                            {/*------cat2-------*/}
+                            <Cat
+                                name="Пушок"
+                                color="Белый"
+                                age={5}
+                                hobby="Бегать и врезаться в стены"
+                                avatar="https://www.petmd.com/sites/default/files/styles/article_image/public/petmd-kitten-development.jpg?itok=TZW_49uD"
+                            />
+                            {/*------cat3-------*/}
+                            <Cat
+                                name="Рыжик"
+                                color="Рыжий"
+                                age={7}
+                                hobby="Смотреть телевизор"
+                                avatar="https://valevets.com/wp-content/uploads/2014/08/kitten1.jpg"
+                            />
+                        </div>
+                    );
+                }
+            }          
+
+            ReactDOM.render(<Cats />, document.getElementById('root'));
+            // END CODE
+		</script>
+    </body>
+</html>

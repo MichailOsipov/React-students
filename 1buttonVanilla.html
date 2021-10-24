@@ -1,0 +1,30 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			// START CODE
+			let count = 0;
+
+			const writeClicks = () => {
+				count += 1;
+
+				alert('you clicked times ' + count);
+			}
+
+			const root = document.getElementById('root');
+
+			const button = document.createElement('button');
+			button.innerHTML = 'Click me!';
+			button.addEventListener('click', writeClicks);
+
+			root.appendChild(button);
+			// END CODE
+		</script>
+    </body>
+</html>

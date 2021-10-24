@@ -1,0 +1,38 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+    <style>
+      .blackSquare {
+        background: black;
+        height: 20px;
+        width: 600px;
+      }
+    </style>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+          // START CODE
+          class StylesExample extends React.Component {          
+            render() {          
+              return (
+                <div style={{ background: 'green', width: 500, height: 200 }}>
+                  <span style={{ fontSize: 30, color: 'red' }}>Стилизованный текст</span>
+                  <div style={{ background: 'yellow', border: '3px dashed', marginTop: 20 }}>Еще текст</div>
+                  <div className="blackSquare" />
+                </div>
+              );
+            }
+          }
+
+          ReactDOM.render(<StylesExample />, document.getElementById('root'));
+			    // END CODE
+		</script>
+    </body>
+</html>

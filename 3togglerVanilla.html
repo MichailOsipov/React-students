@@ -1,0 +1,70 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			// START CODE
+			const root = document.getElementById('root');
+
+			let opened = false;
+
+			// контейнер
+			const div1 = document.createElement('div');
+			root.appendChild(div1);
+
+			// кнопка
+			const button = document.createElement('button');
+
+			button.innerHTML = "Закрыть";
+
+			const toggleOpen = () => {
+				opened = !opened;
+
+				div1.innerHTML = '';
+				div1.appendChild(button);
+
+				if (opened === true) {
+					button.innerHTML = 'Закрыть';
+					div1.appendChild(div2);
+				} else {
+					button.innerHTML = 'Открыть';
+				}
+
+				div1.appendChild(div3);
+				div1.appendChild(div4);
+				div1.appendChild(link);
+			}
+
+			button.addEventListener('click', toggleOpen);
+
+			const div2 = document.createElement('div');
+			div2.innerHTML = 'А этот текст спрятанный';
+
+			// А этот текст всегда отображается 
+			const div3 = document.createElement('div');
+			div3.innerHTML = 'А этот текст всегда отображается';
+
+			// Еще какой-то текст
+			const div4 = document.createElement('div');
+			div4.innerHTML = 'Еще какой-то текст';
+
+			// ссылка на гугл
+			const link = document.createElement('a');
+			link.setAttribute('target', '_blank');
+			link.setAttribute('href', 'https://www.google.com/');
+			link.innerHTML = 'Ссылка на гугл';
+
+			div1.appendChild(button);
+			div1.appendChild(div3);
+			div1.appendChild(div4);
+			div1.appendChild(link);
+
+			// END CODE
+		</script>
+    </body>
+</html>

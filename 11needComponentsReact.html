@@ -1,0 +1,79 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+          // START CODE
+		  class Cats extends React.Component {
+			  render() {
+				  return (
+					  <div>
+						{/*------cat1-------*/}
+						<div>
+							<h2 style={{ fontSize: 30 }}>Белыш</h2>
+							<div style={{ fontSize: 25 }}>
+								<b>Цвет: </b>
+								<span>Черный</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Возраст: </b>
+								<span>3</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Любит: </b>
+								<span>Рвать обои</span>
+							</div>
+							<img style={{ width: 300, height: 150 }} src="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png" alt="avatar" />
+						</div>
+						{/*------cat2-------*/}
+						<div>
+							<h2 style={{ fontSize: 30 }}>Пушок</h2>
+							<div style={{ fontSize: 25 }}>
+								<b>Цвет: </b>
+								<span>Белый</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Возраст: </b>
+								<span>5</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Любит: </b>
+								<span>Бегать и врезаться в стены</span>
+							</div>
+							<img style={{ width: 300, height: 150 }} src="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png" alt="avatar" />
+						</div>
+						{/*------cat3-------*/}
+						<div>
+							<h2 style={{ fontSize: 30 }}>Рыжик</h2>
+							<div style={{ fontSize: 25 }}>
+								<b>Цвет: </b>
+								<span>Рыжий</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Возраст: </b>
+								<span>7</span>
+							</div>
+							<div style={{ fontSize: 25 }}>
+								<b>Любит: </b>
+								<span>Смотреть телевизор</span>
+							</div>
+							<img style={{ width: 300, height: 150 }} src="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png" alt="avatar" />
+						</div>
+					  </div>
+				  );
+			  }
+		  }          
+
+          ReactDOM.render(<Cats />, document.getElementById('root'));
+          // END CODE
+		</script>
+    </body>
+</html>

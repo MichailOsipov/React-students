@@ -1,0 +1,47 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+          // START CODE
+          class StateExample extends React.Component {
+            state = { opened: false };
+
+            toggleOpen = () => {
+                const opened = this.state.opened;
+                this.setState({ opened: !opened });
+            }
+
+            render() {
+                const opened = this.state.opened;
+
+                let text = '';
+
+                if (opened) {
+                    text = 'Спрятать кота';
+                } else {
+                    text = 'Показать кота';
+                }
+
+                return (
+                    <div>
+                        <button onClick={this.toggleOpen}>{text}</button><br />
+                        {opened === true && <img src="https://icatcare.org/app/uploads/2018/07/Helping-your-new-cat-or-kitten-settle-in-1.png" />}
+                    </div>
+                );
+            }
+          }
+
+          ReactDOM.render(<StateExample />, document.getElementById('root'));
+          // END CODE
+		</script>
+    </body>
+</html>

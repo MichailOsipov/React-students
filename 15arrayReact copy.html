@@ -1,0 +1,39 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+			// START CODE
+			class Example extends React.Component {
+				state = { students: ['Andrey', 'Nikolay', 'Daria', 'Anna'] };
+
+				render(){
+					const students = this.state.students;
+					
+					return(
+                        <div>
+						    {students.map((student) => {
+                                return (
+                                    <div key={student}>
+										<h3>{student}</h3>
+									</div>
+                                );
+                            })}
+                        </div>
+					)
+				}
+			}
+
+			ReactDOM.render(<Example />, document.getElementById('root'));
+			// END CODE
+		</script>
+    </body>
+</html>

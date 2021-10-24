@@ -1,0 +1,93 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+			// START CODE
+            class Intro extends React.Component {
+                render() {
+                    const onNext = this.props.onNext;
+
+                    return (
+                        <div>
+                            <button onClick={onNext}>Начать опрос</button>
+                        </div>
+                    );
+                }
+            }
+
+            class Question1 extends React.Component {
+                render() {
+                    const onNext = this.props.onNext;
+
+                    return (
+                        <div>
+                            <div>Вопрос 1: Как вас зовут</div>
+                            <input type="text" style={{ fontSize: 50 }} /><br />
+                            <button onClick={onNext}>Продолжить</button>
+                        </div>
+                    );
+                }                
+            }
+
+            class Question2 extends React.Component {
+                render() {
+                    const onNext = this.props.onNext;
+                    
+                    return (
+                        <div>
+                            <div>Вопрос 2: Сколько вам лет</div>
+                            <input type="text" style={{ fontSize: 50 }} /><br />
+                            <button onClick={onNext}>Завершить</button>
+                        </div>
+                    );
+                }               
+            }
+
+            class Complete extends React.Component {
+                render() {
+                    return (
+                        <div>
+                            <div>Ура, вы прошли опрос!</div>
+                        </div>
+                    );
+                }                
+            }
+
+            const steps = [Intro, Question1, Question2, Complete];
+
+			class Example extends React.Component {
+                state = { step: 0 }
+
+                handleNext = () => {
+                    const previousStep = this.state.step;
+
+                    this.setState({ step: previousStep + 1 });
+                }
+
+				render(){
+                    const stepIndex = this.state.step;
+                    const Step = steps[stepIndex];
+
+					return(
+                        <div style={{ fontSize: 50 }}>
+                            <div>Опрос</div>
+                            <Step onNext={this.handleNext} />
+                        </div>
+					)
+				}
+			}
+
+			ReactDOM.render(<Example />, document.getElementById('root'));
+			// END CODE
+		</script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>React</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			// START CODE
+			const root = document.getElementById('root');
+
+			const input = document.createElement('input');
+			input.setAttribute('value', 'Hello world!');
+
+            const text = document.createElement('span');
+            text.innerHTML = 'Вы ввели: Hello world!';
+
+            const onInputChange = (event) => {
+                const value = event.target.value;
+                text.innerHTML = 'Вы ввели: ' + value;
+            }
+
+			input.addEventListener('input', onInputChange);
+
+			root.appendChild(input);
+            root.appendChild(text);
+			// END CODE
+		</script>
+    </body>
+</html>
